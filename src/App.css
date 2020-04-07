@@ -27,11 +27,15 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+.card-header {
+  height: 73px;
+}
+
+/*@keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
-  }
-  to {
     transform: rotate(360deg);
   }
-}
+  to {
+    transform: rotate(0deg);
+  }
+}*/

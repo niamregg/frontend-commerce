@@ -1,16 +1,19 @@
 import React, { Component} from 'react';
-import Products from "./components/products";
-import logo from './logo.svg';
+import Body from './components/body';
+import logo from './sneakers.svg';
 import './App.css';
 
-class App extends  Component {
-
-  state = {
-    products: []
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      logo: logo
+    };
   }
 
   componentDidMount() {
-    fetch('https://my-json-server.typicode.com/jubs16/Products/Products')
+    fetch('http://my-json-server.typicode.com/niamregg/json-placeholder/data')
       .then(res => res.json())
       .then((data) => {
         this.setState({ products: data })
@@ -20,7 +23,10 @@ class App extends  Component {
 
   render() {
     return (
-        <Products products={this.state.products} />
+      <Body
+        logo={this.state.logo}
+        products={this.state.products}
+      />
     )
   }
 }
