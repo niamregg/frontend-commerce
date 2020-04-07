@@ -1,26 +1,28 @@
-import React from 'react';
+import React, { Component} from 'react';
+import Products from "./components/products";
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends  Component {
+
+  state = {
+    products: []
+  }
+
+  componentDidMount() {
+    fetch('https://my-json-server.typicode.com/jubs16/Products/Products')
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ products: data })
+      })
+      .catch(console.log)
+  }
+
+  render() {
+    return (
+        <Products products={this.state.products} />
+    )
+  }
 }
 
 export default App;
